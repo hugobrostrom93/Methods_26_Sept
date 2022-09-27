@@ -1,4 +1,6 @@
-﻿namespace Area_Kalkylator
+﻿using System.Drawing;
+
+namespace Area_Kalkylator
 {
     internal class Program
     {
@@ -27,6 +29,30 @@
             //if (!isSame) Console.Write("inte ");
             //Console.WriteLine("lika");
 
+            //ConvertToFahrenheit(0);
+            //ConvertToFahrenheit(100);
+            //ConvertToFahrenheit(37);
+            //ConvertToFahrenheit(-40);
+            //ConvertToFahrenheit(40);
+
+            //int area32 = AreaOfSquare(32);
+            //int area51 = AreaOfSquare(51); // LOL
+
+            //AreaOfRectangle(13, 37); // Leet
+            //AreaOfRectangle(4, 2);
+
+            //OrthogonArea(13, 37);
+
+            //CircleAreaAndCircumference(13);
+            //CircleAreaAndCircumference(37);
+
+            //int amount = 3;
+            //int sum = DiceThrow(amount);
+            //Console.WriteLine($"Summan av {amount} kast blev {sum}");
+
+            int price = 100;
+            int vat = 25;
+            Console.WriteLine($"Priset är {price}kr och moms är {vat}%, totalt blir det { PriceWithTax(price, vat)} kr");
 
         }
 
@@ -171,13 +197,68 @@
             if (a == b)
             {
                 return true;
-            } else 
+            }
+            else
             {
                 return false;
             }
         }
 
+        public static double ConvertToFahrenheit(int celcius)
+        {
+            int faren = (celcius / 5) * 9 + 32;
+            Console.WriteLine(faren);
+            return faren;
+        }
 
+        public static int AreaOfSquare(int side)
+        {
+            int square = side * side;
+            Console.WriteLine($"The are of sides = {side} is {square}");
+            return square;
+        }
 
+        public static int AreaOfRectangle(int width, int height)
+        {
+            int reqt = width * height;
+            Console.WriteLine($"The are of the rectangle with the width of {width} and height of {height} is {reqt}");
+            return reqt;
+        }
+
+        public static double OrthogonArea(int width, int height)
+        {
+            int tri = (width * height) / 2;
+            Console.WriteLine($"The are of the triangle with the width of {width} and height of {height} is {tri}");
+            return tri;
+        }
+
+        public static double CircleAreaAndCircumference(double radius)
+        {
+            double cirO = 2 * radius * Math.PI;
+            double cirA = Math.PI * radius * radius;
+            Console.WriteLine($"Omkretsen är {cirO} och arean är {cirA}");
+            return cirO;
+            return cirA;
+        }
+
+        public static int DiceThrow(int amount)
+        {
+            Random random = new Random();
+            int sum = 0;
+
+            for (int i = 0; i < amount; i++)
+            {
+                int kast = random.Next(1, 7);
+                Console.WriteLine(kast);
+                sum += kast;                
+            }
+            return sum;
+        }
+
+        public static double PriceWithTax(int price, int vat)
+        {
+            double tot = price * 1.25;
+            return tot;
+        }
     }
 }
